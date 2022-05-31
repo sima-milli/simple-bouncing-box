@@ -1,0 +1,48 @@
+<html style='background-color: black'>
+  <div id="my_bouncing_box" style= "background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;" >Not loaded</div>
+  <script type="text/javascript">
+    var box = document.getElementById("my_bouncing_box");
+    box.innerHTML = "s_milli";
+    var viewWidth = window.innerWidth;
+    var viewHeight = window.innerHeight;
+    var x = 0;
+    var y = 0;
+    var speed = 10;
+    var dy = 'bottom';
+    var dx = 'right';
+
+    setInterval(move, 100);
+
+    function move() {
+        if (dy == 'bottom') {
+            y = y + speed;
+        } 
+        else {
+            y = y - speed;
+        }
+        if (dx == 'right') {
+            x = x + speed;
+        } 
+        else {
+            x = x - speed;
+        }
+        // viewHeight - box height
+        if (y >= viewHeight - 100) {
+            dy = 'top'
+        }
+        if (y <= 0) {
+            dy = 'bottom'
+        }
+        // viewWidth - box width
+        if (x >= viewWidth - 100) {
+            dx = 'left'
+        }
+        if (x <= 0) {
+            dx = 'right'
+        }
+        
+        box.style.top = y + 'px';
+        box.style.left = x + 'px';
+    }
+  </script>
+</html>
